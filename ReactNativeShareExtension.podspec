@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.author         = { package_json["author"] => package_json["author"] }
   s.platform       = :ios, "9.0"
   s.source         = { :git => "https://github.com/ketanvault/react-native-share-extension.git", :tag => "master" } 
-  s.source_files   = 'ios/ReactNativeShareExtension/*.{h,m}'
+  s.source_files   = 'ios/*.{h,m}'
 
   s.dependency 'React'
 
