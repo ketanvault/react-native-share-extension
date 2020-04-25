@@ -1,18 +1,21 @@
 require 'json'
-package_json = JSON.parse(File.read('package.json'))
+
+package = JSON.parse(File.read(File.join(__dir__, 'package.json')))
 
 Pod::Spec.new do |s|
+  s.name         = "ReactNativeShareExtension"
+  s.version      = package['version']
+  s.summary      = package['description']
+  s.license      = package['license']
 
-  s.name           = "react-native-share-extension"
-  s.version        = package_json["version"]
-  s.summary        = package_json["description"]
-  s.homepage       = "https://github.com/ketanvault/react-native-share-extension"
-  s.license        = package_json["license"]
-  s.author         = { package_json["author"] => package_json["author"] }
-  s.platform       = :ios, "9.0"
-  s.source         = { :git => "https://github.com/ketanvault/react-native-share-extension.git", :tag => "master" } 
-  s.source_files   = 'ios/*.{h,m}'
+  s.authors      = package['author']
+  s.homepage     = package['repository']['url']
+  s.platform     = :ios, "9.0"
+  s.ios.deployment_target = '9.0'
+  s.tvos.deployment_target = '10.0'
+
+  s.source       = { :git => "https://github.com/ketanvault/react-native-share-extension.git", :tag => "master" }
+  s.source_files  = "ios/**/*.{h,m}"
 
   s.dependency 'React'
-
 end
